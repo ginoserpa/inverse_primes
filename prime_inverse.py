@@ -1,7 +1,7 @@
-from tkinter.constants import FALSE, TRUE
-
-
-def is_proper(num:int, den:int) -> bool:
+def is_proper(num: int, den: int) -> bool:
     if num >= den:
-        return FALSE
-    return TRUE
+        return False
+    return True
+
+
+print(is_proper(200, 39))
