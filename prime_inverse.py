@@ -1,3 +1,6 @@
+import sys
+
+
 def inverse_analyzer(n: int) -> tuple[list[int], list[int], int, int]:
     q_s: list[int] = []
     r_s: list[int] = []
@@ -17,4 +20,6 @@ def inverse_analyzer(n: int) -> tuple[list[int], list[int], int, int]:
     return q_s, r_s, r, iter
 
 
-print(inverse_analyzer(213))
+if __name__ == "__main__":
+    n = int(sys.argv[1])
+    print(inverse_analyzer(n))
