@@ -4,7 +4,6 @@ import sys
 def inverse_analyzer(n: int) -> tuple[list[int], list[int], int, int]:
     q_s: list[int] = []
     r_s: list[int] = []
-
     r = 1
     q, r = divmod(r * 10, n)
     iter = 0
@@ -13,13 +12,25 @@ def inverse_analyzer(n: int) -> tuple[list[int], list[int], int, int]:
         r_s.append(r)
         q, r = divmod(r * 10, n)
         iter += 1
-        if iter > n + 1:
+        if iter > 2 * n + 1:
             print("iteration: ", iter)
             break
+    if r == 0:
+        q_s.append(q)
+        r_s.append(r)
+        print("Finite decimal representation")
+        print("Number of non-zero decimal digits", len(q_s))
+    elif r in r_s:
+        q_s.append(q)
 
     return q_s, r_s, r, iter
 
 
 if __name__ == "__main__":
     n = int(sys.argv[1])
-    print(inverse_analyzer(n))
+    print(n)
+    q_s, r_s, r, iter = inverse_analyzer(n)
+    print("quotients: ", q_s)
+    print("residues: ", r_s)
+    print("last residue: ", r)
+    print("Number of iterations: ", iter)
