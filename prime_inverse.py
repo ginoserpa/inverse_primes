@@ -6,7 +6,7 @@ def inverse_analyzer(n: int) -> tuple[list[int], list[int], int, int]:
     r_s: list[int] = []
     r = 1
     q, r = divmod(r * 10, n)
-    iter = 0
+    iter = 1
     while r != 0 and r not in r_s:
         q_s.append(q)
         r_s.append(r)
@@ -26,15 +26,17 @@ def inverse_analyzer(n: int) -> tuple[list[int], list[int], int, int]:
 
 for n in range(2, 14):
     q_s, r_s, r, iter = inverse_analyzer(n)
-    print(n)
+    print(f"1/{n}")
     if r == 0:
-        print(f"finite decimal representation")
-        print(f"number of digits = {len(r_s)}")
-    print(f"quotients: {q_s}")
-    print(f"residues: {r_s}")
-    print("last residue: ", r)
-    print("Number of iterations: ", iter)
-    print(q_s)
-    decimal_representation = [str(i) for i in q_s]
-    print("repeated pattern", decimal_representation)
+        print("Finite decimal representation")
+        decimal_representation = [str(i) for i in q_s]
+        print(f"decimal representation 0.{''.join(decimal_representation)}")
+        print(f"quotients: {q_s}")
+        print(f"residues: {r_s}")
+        print("last residue: ", r)
+    else:
+        print("Repeated pattern")
+        decimal_representation = [str(i) for i in q_s]
+        print(f"decimal representation 0.({''.join(decimal_representation)})")
+
     print(f"Compare to {1 / n}\n")
