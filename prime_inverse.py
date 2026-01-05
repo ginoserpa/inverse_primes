@@ -18,8 +18,8 @@ def inverse_analyzer(n: int) -> tuple[list[int], list[int], int, int]:
     if r == 0:
         q_s.append(q)
         r_s.append(r)
-    elif r in r_s:
-        q_s.append(q)
+        # elif r in r_s:
+        # q_s.append(q)
 
     return q_s, r_s, r, iter
 
@@ -29,13 +29,16 @@ for n in range(2, 14):
     print(f"1/{n}")
     if r == 0:
         print("Finite decimal representation")
-        decimal_representation = [str(i) for i in q_s]
-        print(f"decimal representation 0.{''.join(decimal_representation)}")
         print(f"quotients: {q_s}")
         print(f"residues: {r_s}")
-        print("last residue: ", r)
+        print(f"last residue: {r}")
+        decimal_representation = [str(i) for i in q_s]
+        decimal_representation = "".join(decimal_representation)
+        print(f"decimal representation 0.{decimal_representation}")
     else:
         print("Repeated pattern")
+        print(f"quotients {q_s}")
+        print(f"residues {r_s}")
         decimal_representation = [str(i) for i in q_s]
         print(f"decimal representation 0.({''.join(decimal_representation)})")
 
